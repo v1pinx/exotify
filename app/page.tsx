@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import axios from "axios";
+import { Appbar } from "./components/Appbar";
 
 export default function Home() {
   const [token, setToken] = useState(null);
@@ -17,8 +18,7 @@ export default function Home() {
 
   return (
     <>
-      <Button onClick={generateToken}>Generate</Button>
-      <div>Token: {token || "No token generated yet"}</div>
+      <Appbar />
     </>
   );
 }
