@@ -27,17 +27,20 @@ export async function POST(req: Request) {
     // Setting the cookie using `setCookie`
     const res = NextResponse.json({ success: true, token: accessToken });
     setCookie("sp_token", accessToken, {
-      req: req as any, 
-      res, 
-      httpOnly: true, 
-      secure: process.env.NODE_ENV === "production", 
-      maxAge: expiresIn, 
-      path: "/", 
+      req: req as any,
+      res,
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      maxAge: expiresIn,
+      path: "/",
     });
 
     return res;
   } catch (error: any) {
-    console.error("Error fetching token:", error.response?.data || error.message);
+    console.error(
+      "Error fetching token:",
+      error.response?.data || error.message
+    );
 
     // Return an error response
     return NextResponse.json(
